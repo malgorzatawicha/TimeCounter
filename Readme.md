@@ -8,5 +8,5 @@
 
 ## Running tests
 ```bash
-./vendor/bin/phpunit tests/
+./vendor/bin/phpunit
 ```
