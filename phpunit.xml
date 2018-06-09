@@ -21,4 +21,7 @@
         timeoutForMediumTests="10"
         timeoutForLargeTests="60"
         verbose="true">
+    <logging>
+        <log type="coverage-clover" target="clover.xml"/>
+    </logging>
 </phpunit>
