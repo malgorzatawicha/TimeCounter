@@ -123,9 +123,9 @@ build:
     tests:
         override:
             -
-                command: 'phpunit --coverage-clover=some-file'
+                command: 'vendor/bin/phpunit --coverage-clover=some-file'
                 coverage:
                     file: 'some-file'
-                    format: 'php-clover'
+                    format: 'clover'
     environment:
-            php: '7.0'
+            php: '7.0.20'
