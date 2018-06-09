@@ -37,6 +37,7 @@ class YearTimeUnitTest extends TestCase
             '2016 precedes 2017' => ['2016', '2017', true],
             '2017 does not precede 2017' => ['2017', '2017', false],
             '2018 does not precede 2017' => ['2018', '2017', false],
+            '2019 does not precede 2017' => ['2019', '2017', false],
         ];
     }
 
@@ -64,6 +65,35 @@ class YearTimeUnitTest extends TestCase
             '2017 is preceded by 2016' => ['2017', '2016', true],
             '2017 is not preceded by 2017' => ['2017', '2017', false],
             '2017 is not preceded by 2018' => ['2017', '2018', false],
+            '2017 is not preceded 2019' => ['2017', '2019', false],
+        ];
+    }
+
+    /**
+     * @dataProvider yearsMeetsOtherYears
+     * @param string $firstYearValue
+     * @param string $secondYearValue
+     * @param bool $expectedResult
+     */
+    public function testCheckingOneYearMeetsSecondReturnsCorrectResults(
+        string $firstYearValue,
+        string $secondYearValue,
+        bool $expectedResult
+    ) {
+        $firstYear = new YearTimeUnit($firstYearValue);
+        $secondYear = new YearTimeUnit($secondYearValue);
+
+        $this->assertEquals($expectedResult, $firstYear->meets($secondYear));
+    }
+
+    public function yearsMeetsOtherYears()
+    {
+        return [
+            '2015 does not meet 2018' => ['2015', '2018', false],
+            '2016 meets 2017' => ['2016', '2017', true],
+            '2017 does not meet 2017' => ['2017', '2017', false],
+            '2018 does not meet 2018' => ['2018', '2017', false],
+            '2019 does not meet 2017' => ['2019', '2017', false],
         ];
     }
 }
