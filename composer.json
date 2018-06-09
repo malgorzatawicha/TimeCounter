@@ -1,0 +1,19 @@
+{
+  "name": "mwicha/timecounter",
+  "type": "library",
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  },
+  "authors": [
+    {
+      "name": "Małgorzata Wicha",
+      "email": "malgorzata.wicha@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "TimeCounter\\": "src/"
+    }
+  }
+}
