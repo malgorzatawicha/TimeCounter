@@ -97,7 +97,6 @@ class YearTimeUnitTest extends TestCase
         ];
     }
 
-
     /**
      * @dataProvider yearsMetByOtherYears
      * @param string $firstYearValue
@@ -125,4 +124,91 @@ class YearTimeUnitTest extends TestCase
             '2019 is not met 2017' => ['2019', '2017', false],
         ];
     }
+
+    /**
+     * @expectedException \TimeCounter\TimeUnit\NotComparableException
+     */
+    public function testCheckingOneYearOverlapsSecondThrowsNotComparableException()
+    {
+        $firstYear = new YearTimeUnit('2015');
+        $secondYear = new YearTimeUnit('2016');
+
+        $firstYear->overlaps($secondYear);
+    }
+
+    /**
+     * @expectedException \TimeCounter\TimeUnit\NotComparableException
+     */
+    public function testCheckingOneYearIsOverlappedBySecondThrowsNotComparableException()
+    {
+        $firstYear = new YearTimeUnit('2015');
+        $secondYear = new YearTimeUnit('2016');
+
+        $firstYear->overlappedBy($secondYear);
+    }
+
+    /**
+     * @expectedException \TimeCounter\TimeUnit\NotComparableException
+     */
+    public function testCheckingOneYearFinishesSecondThrowsNotComparableException()
+    {
+        $firstYear = new YearTimeUnit('2015');
+        $secondYear = new YearTimeUnit('2016');
+
+        $firstYear->finishes($secondYear);
+    }
+
+    /**
+     * @expectedException \TimeCounter\TimeUnit\NotComparableException
+     */
+    public function testCheckingOneYearIsFinishedBySecondThrowsNotComparableException()
+    {
+        $firstYear = new YearTimeUnit('2015');
+        $secondYear = new YearTimeUnit('2016');
+
+        $firstYear->finishedBy($secondYear);
+    }
+    /**
+     * @expectedException \TimeCounter\TimeUnit\NotComparableException
+     */
+    public function testCheckingOneYearStartsSecondThrowsNotComparableException()
+    {
+        $firstYear = new YearTimeUnit('2015');
+        $secondYear = new YearTimeUnit('2016');
+
+        $firstYear->starts($secondYear);
+    }
+
+    /**
+     * @expectedException \TimeCounter\TimeUnit\NotComparableException
+     */
+    public function testCheckingOneYearIsStartedBySecondThrowsNotComparableException()
+    {
+        $firstYear = new YearTimeUnit('2015');
+        $secondYear = new YearTimeUnit('2016');
+
+        $firstYear->startedBy($secondYear);
+    }
+    /**
+     * @expectedException \TimeCounter\TimeUnit\NotComparableException
+     */
+    public function testCheckingOneYearDuringSecondThrowsNotComparableException()
+    {
+        $firstYear = new YearTimeUnit('2015');
+        $secondYear = new YearTimeUnit('2016');
+
+        $firstYear->during($secondYear);
+    }
+
+    /**
+     * @expectedException \TimeCounter\TimeUnit\NotComparableException
+     */
+    public function testCheckingOneYearContainsSecondThrowsNotComparableException()
+    {
+        $firstYear = new YearTimeUnit('2015');
+        $secondYear = new YearTimeUnit('2016');
+
+        $firstYear->contains($secondYear);
+    }
+
 }

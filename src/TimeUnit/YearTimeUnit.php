@@ -35,23 +35,55 @@ class YearTimeUnit implements Comparable
         return false;
     }
 
+    /**
+     * @param Comparable $comparable
+     * @return bool
+     * @throws NotComparableException
+     */
     public function overlaps(Comparable $comparable): bool
     {
+        if ($comparable instanceof YearTimeUnit) {
+            throw new NotComparableException();
+        }
         return false;
     }
 
+    /**
+     * @param Comparable $comparable
+     * @return bool
+     * @throws NotComparableException
+     */
     public function finishedBy(Comparable $comparable): bool
     {
+        if ($comparable instanceof YearTimeUnit) {
+            throw new NotComparableException();
+        }
         return false;
     }
 
+    /**
+     * @param Comparable $comparable
+     * @return bool
+     * @throws NotComparableException
+     */
     public function contains(Comparable $comparable): bool
     {
+        if ($comparable instanceof YearTimeUnit) {
+            throw new NotComparableException();
+        }
         return false;
     }
 
+    /**
+     * @param Comparable $comparable
+     * @return bool
+     * @throws NotComparableException
+     */
     public function starts(Comparable $comparable): bool
     {
+        if ($comparable instanceof YearTimeUnit) {
+            throw new NotComparableException();
+        }
         return false;
     }
 
@@ -60,23 +92,55 @@ class YearTimeUnit implements Comparable
         return false;
     }
 
+    /**
+     * @param Comparable $comparable
+     * @return bool
+     * @throws NotComparableException
+     */
     public function startedBy(Comparable $comparable): bool
     {
+        if ($comparable instanceof YearTimeUnit) {
+            throw new NotComparableException();
+        }
         return false;
     }
 
+    /**
+     * @param Comparable $comparable
+     * @return bool
+     * @throws NotComparableException
+     */
     public function during(Comparable $comparable): bool
     {
+        if ($comparable instanceof YearTimeUnit) {
+            throw new NotComparableException();
+        }
         return false;
     }
 
+    /**
+     * @param Comparable $comparable
+     * @return bool
+     * @throws NotComparableException
+     */
     public function finishes(Comparable $comparable): bool
     {
+        if ($comparable instanceof YearTimeUnit) {
+            throw new NotComparableException();
+        }
         return false;
     }
 
+    /**
+     * @param Comparable $comparable
+     * @return bool
+     * @throws NotComparableException
+     */
     public function overlappedBy(Comparable $comparable): bool
     {
+        if ($comparable instanceof YearTimeUnit) {
+            throw new NotComparableException();
+        }
         return false;
     }
 
