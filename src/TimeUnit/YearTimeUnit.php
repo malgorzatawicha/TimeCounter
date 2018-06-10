@@ -82,6 +82,9 @@ class YearTimeUnit implements Comparable
 
     public function metBy(Comparable $comparable): bool
     {
+        if ($comparable instanceof YearTimeUnit) {
+            return $this->getYear() == ($comparable->getYear() + 1);
+        }
         return false;
     }
 
