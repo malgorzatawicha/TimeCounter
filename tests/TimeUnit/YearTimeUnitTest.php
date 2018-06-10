@@ -126,6 +126,34 @@ class YearTimeUnitTest extends TestCase
     }
 
     /**
+     * @dataProvider yearsEqualsOtherYears
+     * @param string $firstYearValue
+     * @param string $secondYearValue
+     * @param bool $expectedResult
+     */
+    public function testCheckingOneYearEqualsSecondReturnsCorrectResults(
+        string $firstYearValue,
+        string $secondYearValue,
+        bool $expectedResult
+    ) {
+        $firstYear = new YearTimeUnit($firstYearValue);
+        $secondYear = new YearTimeUnit($secondYearValue);
+
+        $this->assertEquals($expectedResult, $firstYear->equals($secondYear));
+    }
+
+    public function yearsEqualsOtherYears()
+    {
+        return [
+            '2015 is not equal 2017' => ['2015', '2017', false],
+            '2016 is not equal 2017' => ['2016', '2017', false],
+            '2017 is equal 2017' => ['2017', '2017', true],
+            '2018 is not equal 2017' => ['2018', '2017', false],
+            '2019 is not equal 2017' => ['2019', '2017', false],
+        ];
+    }
+
+    /**
      * @expectedException \TimeCounter\TimeUnit\NotComparableException
      */
     public function testCheckingOneYearOverlapsSecondThrowsNotComparableException()
