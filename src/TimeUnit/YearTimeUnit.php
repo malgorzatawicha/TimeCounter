@@ -89,6 +89,9 @@ class YearTimeUnit implements Comparable
 
     public function equals(Comparable $comparable): bool
     {
+        if ($comparable instanceof YearTimeUnit) {
+            return $this->getYear() == $comparable->getYear();
+        }
         return false;
     }
 
