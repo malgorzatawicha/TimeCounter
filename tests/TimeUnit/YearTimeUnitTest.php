@@ -33,7 +33,7 @@ class YearTimeUnitTest extends TestCase
     public function yearsPrecedesOtherYears()
     {
         return [
-            '2015 precedes 2018' => ['2015', '2018', true],
+            '2015 precedes 2017' => ['2015', '2017', true],
             '2016 precedes 2017' => ['2016', '2017', true],
             '2017 does not precede 2017' => ['2017', '2017', false],
             '2018 does not precede 2017' => ['2018', '2017', false],
@@ -61,11 +61,11 @@ class YearTimeUnitTest extends TestCase
     public function yearsPrecededByOtherYears()
     {
         return [
-            '2018 is preceded by 2015' => ['2018', '2015', true],
-            '2017 is preceded by 2016' => ['2017', '2016', true],
+            '2015 is not preceded by 2017' => ['2015', '2017', false],
+            '2016 is not preceded by 2017' => ['2016', '2017', false],
             '2017 is not preceded by 2017' => ['2017', '2017', false],
-            '2017 is not preceded by 2018' => ['2017', '2018', false],
-            '2017 is not preceded 2019' => ['2017', '2019', false],
+            '2018 is preceded by 2017' => ['2018', '2017', true],
+            '2019 is preceded by 2017' => ['2019', '2017', true],
         ];
     }
 
@@ -89,11 +89,40 @@ class YearTimeUnitTest extends TestCase
     public function yearsMeetsOtherYears()
     {
         return [
-            '2015 does not meet 2018' => ['2015', '2018', false],
+            '2015 does not meet 2017' => ['2015', '2017', false],
             '2016 meets 2017' => ['2016', '2017', true],
             '2017 does not meet 2017' => ['2017', '2017', false],
-            '2018 does not meet 2018' => ['2018', '2017', false],
+            '2018 does not meet 2017' => ['2018', '2017', false],
             '2019 does not meet 2017' => ['2019', '2017', false],
+        ];
+    }
+
+
+    /**
+     * @dataProvider yearsMetByOtherYears
+     * @param string $firstYearValue
+     * @param string $secondYearValue
+     * @param bool $expectedResult
+     */
+    public function testCheckingOneYearIsMetBySecondReturnsCorrectResults(
+        string $firstYearValue,
+        string $secondYearValue,
+        bool $expectedResult
+    ) {
+        $firstYear = new YearTimeUnit($firstYearValue);
+        $secondYear = new YearTimeUnit($secondYearValue);
+
+        $this->assertEquals($expectedResult, $firstYear->metBy($secondYear));
+    }
+
+    public function yearsMetByOtherYears()
+    {
+        return [
+            '2015 is not met 2017' => ['2015', '2017', false],
+            '2016 is not met 2017' => ['2016', '2017', false],
+            '2017 is not met 2017' => ['2017', '2017', false],
+            '2018 is met 2017' => ['2018', '2017', true],
+            '2019 is not met 2017' => ['2019', '2017', false],
         ];
     }
 }
